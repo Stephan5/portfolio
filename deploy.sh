@@ -5,14 +5,14 @@
 rm -rf deploy build
 
 # install dependencies and run build
-npm run build
+yarn build
 
 mkdir deploy
 cd deploy
 cp -r ../build ./static
-cp -r ../public/* ./static
-cp -r ../index.html .
-cp -r ../error.html .
+#cp -r ../public/static/* ./static
+cp -r ../build/index.html .
+cp -r ../build/error.html .
 cd ..
 
 rm -rf build
