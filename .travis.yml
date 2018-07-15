@@ -4,7 +4,7 @@ node_js:
   - stable
 
 script:
-  - source ./deploy.sh
+  - yarn build
 
 deploy:
   on:
