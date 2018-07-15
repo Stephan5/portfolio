@@ -15,11 +15,4 @@ deploy:
   bucket: $AWS_BUCKET_NAME
   region: $AWS_DEFAULT_REGION
   skip_cleanup: true
-  local_dir: deploy
-
-notifications:
-  email:
-    recipients:
-      - $NOTIFICATION_EMAIL
-    on_success: always
-    on_failure: always
+  local_dir: build
