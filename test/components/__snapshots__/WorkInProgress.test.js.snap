@@ -1,16 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot 1`] = `
-<header
-  className="appHeader"
->
-  <h1
-    className="appTitle"
-  >
-    Stephan Blakeslee
-  </h1>
-  <p
-    className="appSubtitle"
-  />
-</header>
+<h1>
+  Stephan Blakeslee
+</h1>
 `;

@@ -48,9 +48,11 @@
   .siteContainer {
     display: flex;
     flex-direction: column;
+    align-content: center;
     position: relative;
     min-height: 100%;
     width: 100%;
+    margin: 20px;
     padding: 15px;
   }
 

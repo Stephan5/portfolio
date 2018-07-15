@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import "styles/core.scss";
 import Header from "components/Header/Header";
 import { Quotes } from "components/Quotes/Quotes";
 import { fetchQuote } from "services/quoteService";
+import { Spacer } from "components/Spacer/Spacer";
+import "styles/core.scss";
 
 class Container extends Component {
   constructor () {
@@ -47,6 +48,7 @@ class Container extends Component {
     return (
       <div className='siteContainer'>
         <Header/>
+        <Spacer/>
         <Quotes quote={quote} resetQuote={this.resetQuote}/>
       </div>
     );
