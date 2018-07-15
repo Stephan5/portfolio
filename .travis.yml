@@ -4,7 +4,7 @@ node_js:
   - stable
 
 script:
-  - yarn build
+  - yarn ci
 
 deploy:
   on:

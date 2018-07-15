@@ -54,9 +54,11 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "build-ci": "CI=true node scripts/build.js",
+    "clean-ci": "rm -rf build coverage",
     "test": "node scripts/test.js --env=jsdom",
     "coverage": "node scripts/test.js --env=jsdom --coverage",
-    "test-ci": "CI=true node scripts/test.js --env=jsdom --coverage"
+    "test-ci": "CI=true node scripts/test.js --env=jsdom --coverage",
+    "ci": "yarn clean-ci && yarn test-ci && yarn build-ci"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -66,8 +68,8 @@
       "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
-      "<rootDir>/tests/**/__tests__/**/*.{js,jsx,mjs}",
-      "<rootDir>/tests/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/test/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/test/**/?(*.)(spec|test).{js,jsx,mjs}"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
@@ -83,7 +85,7 @@
       "^.+\\.scss$": "identity-obj-proxy",
       "^react-native$": "react-native-web"
     },
-    "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTests.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setupTests.js",
     "moduleFileExtensions": [
       "web.js",
       "mjs",
