@@ -40,3 +40,17 @@ div#root {
 *:after {
     box-sizing: inherit;
 }
+
+.bold {
+    font-weight: bold;
+}
+
+.fh {
+    min-height: 100%
+}
+
+.fw {
+    min-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
