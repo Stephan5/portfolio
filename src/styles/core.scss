@@ -1,6 +1,7 @@
 
 :global {
   @import "container";
+  @import "functions";
   html, body {
     height: 100vh;
     width: 100vw;
@@ -14,6 +15,7 @@
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
+    color: white
   }
 
   body {
@@ -44,11 +46,12 @@
   }
 
   .siteContainer {
-    @extend .flexCenter;
     display: flex;
+    flex-direction: column;
     position: relative;
     min-height: 100%;
     width: 100%;
+    padding: 15px;
   }
 
   .bold {
@@ -63,5 +66,43 @@
     min-width: 100%;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  h1 {
+    font-size: leastSquaresFit((576: 28, 768: 30, 992: 38));
+  }
+
+  h2 {
+    font-size: leastSquaresFit((576: 24, 768: 28, 992: 34));
+  }
+
+  h3 {
+    font-size: leastSquaresFit((576: 20, 768: 22, 992: 30));
+  }
+
+  h4 {
+    font-size: leastSquaresFit((576: 16, 768: 20, 992: 25));
+    font-weight: normal;
+    margin: 1rem;
+  }
+
+  p {
+    font-size: leastSquaresFit((576: 16, 768: 18, 992: 20));
+    margin: 10px 0;
+    line-height: 1.8em;
+  }
+
+  a {
+    color: aquamarine;
+    text-decoration: none;
+  }
+
+  button {
+    background: none;
+    color: white;
+    border: white 2px solid;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 1.5rem;
   }
 }

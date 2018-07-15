@@ -1,0 +1,32 @@
+.component {
+  display: flex;
+  //width: min(, 600px);
+
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.header {
+  text-align: left;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.quote {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.author {
+  font-size: 1.8rem;
+  color: lightgray;
+  opacity: 0.5;
+  text-align: end;
+}
+
+.note {
+  font-size: 1.2rem;
+  color: lightgray;
+}
