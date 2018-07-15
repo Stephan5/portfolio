@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="siteContainer"
+>
+  <header
+    className="appHeader"
+  >
+    <h1
+      className="appTitle"
+    >
+      Stephan Blakeslee
+    </h1>
+    <p
+      className="appSubtitle"
+    >
+      Site under construction
+    </p>
+  </header>
+</div>
+`;
