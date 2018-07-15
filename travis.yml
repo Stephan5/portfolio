@@ -1,11 +1,11 @@
 language: node_js
+
 node_js:
-- "9.2.0"
-branches:
-  only:
-  - master
+  - stable
+
 script:
   - source ./deploy.sh
+
 deploy:
   on:
     branch: master
@@ -16,3 +16,10 @@ deploy:
   region: $AWS_DEFAULT_REGION
   skip_cleanup: true
   local_dir: deploy
+
+notifications:
+  email:
+    recipients:
+      - $NOTIFICATION_EMAIL
+    on_success: always
+    on_failure: always
