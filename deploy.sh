@@ -9,8 +9,8 @@ yarn build
 
 mkdir deploy
 cd deploy
-cp -r ../build ./static
-#cp -r ../public/static/* ./static
+cp ../build ./static
+cp -r ../build/static ./static
 cp -r ../build/index.html .
 cp -r ../build/error.html .
 cd ..
