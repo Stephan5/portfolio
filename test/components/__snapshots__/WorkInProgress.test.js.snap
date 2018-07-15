@@ -11,8 +11,6 @@ exports[`snapshot 1`] = `
   </h1>
   <p
     className="appSubtitle"
-  >
-    Site under construction
-  </p>
+  />
 </header>
 `;
