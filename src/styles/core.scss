@@ -1,5 +1,7 @@
 
-html, body {
+:global {
+  @import "container";
+  html, body {
     height: 100vh;
     width: 100vw;
     font-size: 10px;
@@ -12,45 +14,54 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
-}
+  }
 
-body {
+  body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
     background: #222;
     overflow: auto;
-}
+  }
 
-textarea, input, button {
+  textarea, input, button {
     outline: none;
-}
+  }
 
-div#root {
+  div#root {
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-}
+  }
 
-*,
-*:before,
-*:after {
+  *,
+  *:before,
+  *:after {
     box-sizing: inherit;
-}
+  }
 
-.bold {
+  .siteContainer {
+    @extend .flexCenter;
+    display: flex;
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+  }
+
+  .bold {
     font-weight: bold;
-}
+  }
 
-.fh {
+  .fh {
     min-height: 100%
-}
+  }
 
-.fw {
+  .fw {
     min-width: 100%;
     padding-left: 0;
     padding-right: 0;
+  }
 }
