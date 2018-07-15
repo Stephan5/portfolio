@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import "styles/core.scss";
+import WorkInProgress from "components/WorkInProgress/WorkInProgress";
 
 class Container extends Component {
   constructor () {
     super();
-    this.state = {};
+    this.state = {
+      wip: true
+    };
   }
 
   render () {
+    const { wip } = this.state;
     return (
       <div className='siteContainer'>
-        <header className='appHeader'>
-          <h1 className='appTitle'>Stephan Blakeslee</h1>
-          <p className='appSubtitle'>
-            Site under construction
-          </p>
-        </header>
+        {wip ? <WorkInProgress/> : null}
       </div>
     );
   }

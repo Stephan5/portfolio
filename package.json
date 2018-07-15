@@ -9,7 +9,6 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.53",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.53",
     "@babel/preset-env": "^7.0.0-beta.53",
-    "@babel/preset-flow": "^7.0.0-beta.53",
     "@babel/preset-react": "^7.0.0-beta.53",
     "@babel/preset-stage-3": "^7.0.0-beta.53",
     "@babel/register": "^7.0.0-beta.53",
