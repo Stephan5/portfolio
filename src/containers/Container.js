@@ -3,7 +3,7 @@ import Header from "components/Header/Header";
 import { fetchQuote } from "services/quoteService";
 import { Spacer } from "components/Spacer/Spacer";
 import "styles/core.scss";
-import { getBalance, postToken } from "services/starlingService";
+import { getBalance } from "services/starlingService";
 import { isEmpty, validationPresent } from "commons/utils";
 import { AccessTokenForm } from "components/AccessTokenForm/AccessTokenForm";
 import { Balance } from "components/Balance/Balance";
