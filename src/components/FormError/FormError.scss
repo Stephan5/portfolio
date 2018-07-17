@@ -1,0 +1,31 @@
+@import "../../styles/colours";
+
+.formError {
+  color: $errorRed;
+  min-height: 23px;
+  font-size: 1.5rem;
+  line-height: 1.2em;
+  padding: 3px 5px;
+  max-width: 500px;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .formError {
+    min-height: 30px;
+    font-size: 1.4rem;
+    line-height: 1.2em;
+    padding: 8px 5px;
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .formError {
+    min-height: 21px;
+    font-size: 1.1rem;
+    line-height: 1.1em;
+    padding: 8px 5px;
+    max-width: 300px;
+  }
+}
