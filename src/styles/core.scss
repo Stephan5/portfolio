@@ -2,6 +2,8 @@
 :global {
   @import "container";
   @import "functions";
+  @import "colours";
+
   html, body {
     height: 100vh;
     width: 100vw;
@@ -56,6 +58,16 @@
     padding: 15px;
   }
 
+  .flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flexColumn {
+    flex-direction: column;
+  }
+
   .bold {
     font-weight: bold;
   }
@@ -105,6 +117,16 @@
     border: white 2px solid;
     border-radius: 4px;
     padding: 10px 15px;
+    font-size: 1.5rem;
+  }
+
+  input {
+    background: none;
+    color: white;
+    border: white 2px solid;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 5px 15px 15px;
     font-size: 1.5rem;
   }
 }

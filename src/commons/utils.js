@@ -23,7 +23,7 @@ export const isEmpty = (value) => {
 
 export const parseError = (error) => {
   const { response } = error;
-  const validationCodes = response.data.length ? response.data : [];
+  const validationCodes = response.data && response.data.length ? response.data : [];
   // eslint-disable-next-line no-throw-literal
   throw {
     response,
@@ -31,4 +31,13 @@ export const parseError = (error) => {
     validationCodes,
     statusText: response.statusText
   };
+};
+
+export const validationPresent = (e) => !!(e && e.validationCodes && e.validationCodes.length);
+
+export const formatAmount = (amount) => {
+  const isPositiveAmount = amount >= 0;
+  const absoluteAmount = Math.abs(amount);
+  const sign = isPositiveAmount ? "" : "-";
+  return sign + "£" + absoluteAmount;
 };
