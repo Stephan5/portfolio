@@ -24,7 +24,7 @@
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background: #222;
+    background: #303030;
     overflow: auto;
   }
 
@@ -48,9 +48,6 @@
   }
 
   .siteContainer {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
     position: relative;
     min-height: 100%;
     width: 100%;
@@ -82,51 +79,4 @@
     padding-right: 0;
   }
 
-  h1 {
-    font-size: leastSquaresFit((576: 28, 768: 30, 992: 38));
-  }
-
-  h2 {
-    font-size: leastSquaresFit((576: 24, 768: 28, 992: 34));
-  }
-
-  h3 {
-    font-size: leastSquaresFit((576: 20, 768: 22, 992: 30));
-  }
-
-  h4 {
-    font-size: leastSquaresFit((576: 16, 768: 20, 992: 25));
-    font-weight: normal;
-    margin: 1rem;
-  }
-
-  p {
-    font-size: leastSquaresFit((576: 16, 768: 18, 992: 20));
-    margin: 10px 0;
-    line-height: 1.8em;
-  }
-
-  a {
-    color: aquamarine;
-    text-decoration: none;
-  }
-
-  button {
-    background: none;
-    color: white;
-    border: white 2px solid;
-    border-radius: 4px;
-    padding: 10px 15px;
-    font-size: 1.5rem;
-  }
-
-  input {
-    background: none;
-    color: white;
-    border: white 2px solid;
-    border-radius: 4px;
-    padding: 10px 15px;
-    margin: 5px 15px 15px;
-    font-size: 1.5rem;
-  }
 }

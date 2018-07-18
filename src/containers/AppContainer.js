@@ -1,26 +1,28 @@
 import React, { Component } from "react";
-import Header from "components/Header/Header";
 import { fetchQuote } from "services/quoteService";
-import { Spacer } from "components/Spacer/Spacer";
 import "styles/core.scss";
-import { getBalance } from "services/starlingService";
+import { getBalance, postToken } from "services/starlingService";
 import { isEmpty, validationPresent } from "commons/utils";
 import { AccessTokenForm } from "components/AccessTokenForm/AccessTokenForm";
 import { Balance } from "components/Balance/Balance";
+import { Container, Divider, Header, Icon } from "semantic-ui-react";
 
-class Container extends Component {
+class AppContainer extends Component {
   constructor () {
     super();
     this.state = {
       quote: null,
-      accessToken: "",
+      form: {
+        token: ""
+      },
+      tokenId: "",
       errors: null,
       balance: null
     };
   }
 
   componentDidMount () {
-    this.getQuote();
+    // this.getQuote();
   }
 
   getQuote = () => {
@@ -37,7 +39,7 @@ class Container extends Component {
     if (!event || !event.target || event.target.value === null || event.target.value === undefined) return;
     const newValue = event.target.value;
     this.setState({
-      accessToken: newValue
+      form: { token: newValue }
     });
   };
 
@@ -70,27 +72,46 @@ class Container extends Component {
     });
   };
 
-  fetchBalance = (ev) => {
+  fetchBalance = () => {
+    const {
+      tokenId
+    } = this.state;
+
+    if (!tokenId) return;
+
+    getBalance(tokenId)
+      .then(response => {
+        this.setBalance(response.data.effectiveBalance);
+      })
+      .catch(e => {
+        if (validationPresent(e)) {
+          this.setFormError(e.validationCodes[ 0 ]);
+        }
+      });
+  };
+
+  postToken = (ev) => {
     ev.preventDefault();
     const {
-      accessToken
+      form: { token }
     } = this.state;
 
     let errors = {};
     this.clearFormErrors();
 
-    if (!accessToken) {
-      errors.token = "This is not a valid access token.";
-    } else if (accessToken.length !== 64) {
+    if (!token) {
+      errors.token = "Please enter your personal access token.";
+    } else if (token.length !== 64) {
       errors.token = "Access tokens should be 64 characters long.";
     }
 
     if (!isEmpty(errors)) {
       this.setFormError(errors);
     } else {
-      getBalance(accessToken)
+      postToken(token)
         .then(response => {
-          this.setBalance(response.data.balance);
+          console.warn(response.data);
+          this.setTokenId(response.data.accessTokenId);
         })
         .catch(e => {
           if (validationPresent(e)) {
@@ -98,6 +119,10 @@ class Container extends Component {
           }
         });
     }
+  };
+
+  setTokenId = (tokenId) => {
+    this.setState({ tokenId });
   };
 
   setQuote = (response) => {
@@ -110,19 +135,26 @@ class Container extends Component {
   };
 
   render () {
-    const { accessToken, errors, balance } = this.state;
+    const { form, errors, balance, tokenId } = this.state;
     return (
       <div className='siteContainer'>
-        <Header/>
-        <Spacer/>
-        <AccessTokenForm errors={errors}
-                         accessToken={accessToken}
-                         handleTokenChange={this.handleTokenChange}
-                         fetchBalance={this.fetchBalance}/>
-        <Balance balance={balance}/>
+        <Header as='h1' inverted textAlign='center'>
+          <Icon name='globe'/>
+          <Header.Content>Stephan's World</Header.Content>
+        </Header>
+        <Divider/>
+        <br/>
+        <Container textAlign='left' style={{ width: "500px" }}>
+          {tokenId ? null : <AccessTokenForm errors={errors}
+                                             token={form.token}
+                                             handleTokenChange={this.handleTokenChange}
+                                             postToken={this.postToken}/>}
+          {tokenId ? <Balance balance={balance}
+                              fetchBalance={this.fetchBalance}/> : null}
+        </Container>
       </div>
     );
   }
 }
 
-export default Container;
+export default AppContainer;

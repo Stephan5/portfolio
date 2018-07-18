@@ -37,7 +37,7 @@ exports[`snapshot 1`] = `
           autoCorrect="off"
           autoFocus={true}
           onChange={[Function]}
-          placeholder="token"
+          placeholder="64 Character Token"
           type="text"
           value=""
         />
@@ -45,13 +45,13 @@ exports[`snapshot 1`] = `
       <button
         type="submit"
       >
-        Get balance
+        Get access
       </button>
       <br />
       <div
         className="formError"
       >
-        
+
       </div>
     </form>
   </div>

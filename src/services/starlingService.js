@@ -9,11 +9,19 @@ const headers = {
   Accept: "application/json"
 };
 
-export const getBalance = (accessToken) => {
+export const postToken = (accessToken) => {
   return axios({
     method: "post",
     url: starlingUrl("token"),
     data: { accessToken },
+    headers
+  }).catch(parseError);
+};
+
+export const getBalance = (tokenId) => {
+  return axios({
+    method: "get",
+    url: starlingUrl(`balance/${tokenId}`),
     headers
   }).catch(parseError);
 };
