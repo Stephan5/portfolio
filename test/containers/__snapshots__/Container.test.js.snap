@@ -4,56 +4,120 @@ exports[`snapshot 1`] = `
 <div
   className="siteContainer"
 >
-  <h1>
-    Stephan Blakeslee
+  <h1
+    className="ui inverted center aligned header"
+  >
+    <i
+      aria-hidden="true"
+      className="globe icon"
+    />
+    <div
+      className="content"
+    >
+      Stephan's World
+    </div>
   </h1>
   <div
-    className="rule"
+    className="ui divider"
   />
+  <br />
   <div
-    className="flexCenter"
+    className="ui left aligned container"
+    style={
+      Object {
+        "width": "500px",
+      }
+    }
   >
-    <form
-      className="flexCenter flexColumn fw"
-      onSubmit={[Function]}
+    <div
+      className="ui inverted raised segment"
+      style={
+        Object {
+          "margin": "15px",
+          "minHeight": "150px",
+        }
+      }
     >
-      <h2>
-        Starling Bank API
-      </h2>
-      <div
-        className="flexCenter flexColumn"
+      <h2
+        className="ui inverted center aligned header"
       >
-        <p
-          style={
-            Object {
-              "alignSelf": "flex-start",
-            }
-          }
-        >
-          Personal Access Token:
-        </p>
-        <input
-          autoComplete="off"
-          autoCorrect="off"
-          autoFocus={true}
-          onChange={[Function]}
-          placeholder="64 Character Token"
-          type="text"
-          value=""
+        <i
+          aria-hidden="true"
+          className="plug icon"
         />
-      </div>
-      <button
-        type="submit"
-      >
-        Get access
-      </button>
+        <div
+          className="content"
+        >
+          Starling Bank API
+        </div>
+      </h2>
       <br />
       <div
-        className="formError"
+        className="ui left aligned container"
+        style={
+          Object {
+            "width": "400px",
+          }
+        }
       >
-
+        <form
+          action={undefined}
+          className="ui huge inverted form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="field"
+          >
+            <label
+              htmlFor={undefined}
+            >
+              Personal access token
+            </label>
+            <div
+              className="ui input"
+              content={undefined}
+            >
+              <input
+                autoComplete="off"
+                autoCorrect="off"
+                autoFocus={true}
+                disabled={undefined}
+                onChange={[Function]}
+                placeholder="64 Character Token"
+                required={undefined}
+                tabIndex={undefined}
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            className="field"
+          >
+            <button
+              className="ui huge primary button"
+              disabled={undefined}
+              onClick={[Function]}
+              required={undefined}
+              role="button"
+              tabIndex={undefined}
+              type={undefined}
+            >
+              Get access
+            </button>
+          </div>
+          <div
+            className="ui tiny compact error message"
+            style={
+              Object {
+                "margin": 0,
+              }
+            }
+          />
+        </form>
       </div>
-    </form>
+      <br />
+    </div>
   </div>
 </div>
 `;
