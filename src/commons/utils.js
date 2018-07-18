@@ -39,5 +39,5 @@ export const formatAmount = (amount) => {
   const isPositiveAmount = amount >= 0;
   const absoluteAmount = Math.abs(amount);
   const sign = isPositiveAmount ? "" : "-";
-  return sign + "£" + absoluteAmount;
+  return sign + "£" + absoluteAmount.toFixed(2);
 };
