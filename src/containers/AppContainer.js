@@ -6,6 +6,8 @@ import { isEmpty, validationPresent } from "commons/utils";
 import { AccessTokenForm } from "components/AccessTokenForm/AccessTokenForm";
 import { Balance } from "components/Balance/Balance";
 import { Container, Divider, Header, Icon } from "semantic-ui-react";
+import { Social } from "components/Social/Social";
+import { getRepoDetails } from "services/githubService";
 
 class AppContainer extends Component {
   constructor () {
@@ -90,6 +92,27 @@ class AppContainer extends Component {
       });
   };
 
+  setRepoDetails = (repo) => {
+    this.setState({
+      github: {
+        forks: repo.forks_count,
+        stars: repo.stargazers_count
+      }
+    });
+  };
+
+  fetchRepoDetails = () => {
+    getRepoDetails()
+      .then(response => {
+        this.setRepoDetails(response.data);
+      })
+      .catch(e => {
+        if (validationPresent(e)) {
+          this.setFormError(e.validationCodes[ 0 ]);
+        }
+      });
+  };
+
   postToken = (ev) => {
     ev.preventDefault();
     const {
@@ -135,7 +158,7 @@ class AppContainer extends Component {
   };
 
   render () {
-    const { form, errors, balance, tokenId } = this.state;
+    const { form, errors, balance, tokenId, github } = this.state;
     return (
       <div className='siteContainer'>
         <Header as='h1' inverted textAlign='center'>
@@ -152,6 +175,7 @@ class AppContainer extends Component {
           {tokenId ? <Balance balance={balance}
                               fetchBalance={this.fetchBalance}/> : null}
         </Container>
+        <Social fetchRepoDetails={this.fetchRepoDetails} github={github}/>
       </div>
     );
   }
