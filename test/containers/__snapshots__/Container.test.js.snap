@@ -25,6 +25,9 @@ exports[`snapshot 1`] = `
     >
       Portfolio
     </a>
+    <div
+      className="right menu"
+    />
   </div>
   <br />
   <div

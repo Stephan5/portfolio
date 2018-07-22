@@ -17,11 +17,10 @@ class MenuBar extends Component {
         disabled
         active={activeMenuItem === "portfolio"}
         onClick={handleMenuItemClick}/>
-      {tokenId ?
-       <Menu.Menu position='right'>
-         <Menu.Item name='logout' onClick={logOut}/>
-       </Menu.Menu>
-               : null}
+
+      <Menu.Menu position='right'>
+        {tokenId ? <Menu.Item name='logout' onClick={logOut}/> : null}
+      </Menu.Menu>
     </Menu>;
   }
 }
