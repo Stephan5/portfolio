@@ -4,22 +4,28 @@ exports[`snapshot 1`] = `
 <div
   className="siteContainer"
 >
-  <h1
-    className="ui inverted center aligned header"
+  <div
+    className="ui inverted ten item menu"
   >
-    <i
-      aria-hidden="true"
-      className="globe icon"
-    />
     <div
-      className="content"
+      className="header item"
+      onClick={[Function]}
     >
       Stephan's World
     </div>
-  </h1>
-  <div
-    className="ui divider"
-  />
+    <a
+      className="active item"
+      onClick={[Function]}
+    >
+      Starling
+    </a>
+    <a
+      className="disabled item"
+      onClick={[Function]}
+    >
+      Portfolio
+    </a>
+  </div>
   <br />
   <div
     className="ui left aligned container"
@@ -62,7 +68,7 @@ exports[`snapshot 1`] = `
       >
         <form
           action={undefined}
-          className="ui huge inverted form"
+          className="ui inverted form"
           onSubmit={[Function]}
         >
           <div
@@ -91,11 +97,12 @@ exports[`snapshot 1`] = `
               />
             </div>
           </div>
+          <br />
           <div
             className="field"
           >
             <button
-              className="ui huge primary button"
+              className="ui primary button"
               disabled={undefined}
               onClick={[Function]}
               required={undefined}

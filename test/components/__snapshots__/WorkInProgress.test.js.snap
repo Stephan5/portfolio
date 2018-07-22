@@ -1,7 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot 1`] = `
-<h1>
-  Stephan Blakeslee
-</h1>
+<div
+  className="ui inverted ten item menu"
+>
+  <div
+    className="header item"
+    onClick={[Function]}
+  >
+    Stephan's World
+  </div>
+  <div
+    className="item"
+    onClick={[Function]}
+  >
+    Starling
+  </div>
+  <div
+    className="disabled item"
+    onClick={[Function]}
+  >
+    Portfolio
+  </div>
+</div>
 `;
