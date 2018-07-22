@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import WIP from "components/Header/Header";
+import WIP from "components/MenuBar/MenuBar";
 import renderer from "react-test-renderer";
 
 test("renders without crashing", () => {

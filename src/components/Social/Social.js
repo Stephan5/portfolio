@@ -13,9 +13,9 @@ export class Social extends Component {
     if (!github) return null;
     const { stars, forks } = github;
 
-    return <div>
-      <Button as='div' inverted size='large' labelPosition='right'>
-        <Button size='large' basic color='yellow'>
+    return <div style={{ position: "absolute", bottom: "50px", left: "30%" }}>
+      <Button as='div' inverted labelPosition='right'>
+        <Button basic color='yellow'>
           <Icon name='star'/>
           Star
         </Button>

@@ -1,25 +1,36 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { fetchQuote } from "services/quoteService";
 import "styles/core.scss";
-import { getBalance, postToken } from "services/starlingService";
+import { getBalance, getTransasctions, postToken } from "services/starlingService";
 import { isEmpty, validationPresent } from "commons/utils";
 import { AccessTokenForm } from "components/AccessTokenForm/AccessTokenForm";
 import { Balance } from "components/Balance/Balance";
-import { Container, Divider, Header, Icon } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import { Social } from "components/Social/Social";
 import { getRepoDetails } from "services/githubService";
+import { Cookies, withCookies } from "react-cookie";
+import PropTypes from "prop-types";
+import MenuBar from "components/MenuBar/MenuBar";
+import { Transactions } from "components/Transactions/Transactions";
 
 class AppContainer extends Component {
-  constructor () {
-    super();
+  static propTypes = {
+    cookies: PropTypes.instanceOf(Cookies).isRequired
+  };
+
+  constructor (props) {
+    super(props);
+
     this.state = {
       quote: null,
       form: {
         token: ""
       },
-      tokenId: "",
+      tokenId: props.cookies.get("tokenId"),
       errors: null,
-      balance: null
+      balance: null,
+      transactions: null,
+      activeMenuItem: "starling"
     };
   }
 
@@ -70,7 +81,13 @@ class AppContainer extends Component {
 
   setBalance = (balance) => {
     this.setState({
-      balance: balance
+      balance
+    });
+  };
+
+  setTransactions = (transactions) => {
+    this.setState({
+      transactions
     });
   };
 
@@ -84,6 +101,24 @@ class AppContainer extends Component {
     getBalance(tokenId)
       .then(response => {
         this.setBalance(response.data.effectiveBalance);
+      })
+      .catch(e => {
+        if (validationPresent(e)) {
+          this.setFormError(e.validationCodes[ 0 ]);
+        }
+      });
+  };
+
+  fetchTransactions = () => {
+    const {
+      tokenId
+    } = this.state;
+
+    if (!tokenId) return;
+
+    getTransasctions(tokenId)
+      .then(response => {
+        this.setTransactions(response.data.transactions);
       })
       .catch(e => {
         if (validationPresent(e)) {
@@ -145,6 +180,7 @@ class AppContainer extends Component {
   };
 
   setTokenId = (tokenId) => {
+    this.props.cookies.set("tokenId", tokenId, { path: "/" });
     this.setState({ tokenId });
   };
 
@@ -157,23 +193,38 @@ class AppContainer extends Component {
     });
   };
 
+  handleMenuItemClick = (doNotUse, { name }) => { // eslint-disable-line no-unused-vars
+    this.setState({ activeMenuItem: name });
+  };
+
+  logOut = () => {
+    this.props.cookies.remove("tokenId");
+    this.setState({
+      tokenId: null
+    });
+  };
+
   render () {
-    const { form, errors, balance, tokenId, github } = this.state;
+    const { form, errors, balance, transactions, tokenId, github, activeMenuItem } = this.state;
     return (
       <div className='siteContainer'>
-        <Header as='h1' inverted textAlign='center'>
-          <Icon name='globe'/>
-          <Header.Content>Stephan's World</Header.Content>
-        </Header>
-        <Divider/>
+        <MenuBar tokenId={tokenId} activeMenuItem={activeMenuItem} logOut={this.logOut}
+                 handleMenuItemClick={this.handleMenuItemClick}/>
         <br/>
         <Container textAlign='left' style={{ width: "500px" }}>
           {tokenId ? null : <AccessTokenForm errors={errors}
                                              token={form.token}
                                              handleTokenChange={this.handleTokenChange}
                                              postToken={this.postToken}/>}
-          {tokenId ? <Balance balance={balance}
-                              fetchBalance={this.fetchBalance}/> : null}
+          {tokenId ? <Fragment>
+
+                     <Balance balance={balance}
+                              fetchBalance={this.fetchBalance}/>
+
+                     <Transactions transactions={transactions} fetchTransactions={this.fetchTransactions}/>
+                   </Fragment>
+
+                   : null}
         </Container>
         <Social fetchRepoDetails={this.fetchRepoDetails} github={github}/>
       </div>
@@ -181,4 +232,4 @@ class AppContainer extends Component {
   }
 }
 
-export default AppContainer;
+export default withCookies(AppContainer);

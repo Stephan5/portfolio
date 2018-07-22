@@ -1,8 +1,9 @@
 import axios from "axios";
 import { parseError } from "commons/utils";
 
-const starlingUrl = (path) => {
-  return "https://tdhwn6aiki.execute-api.eu-west-1.amazonaws.com/prod/" + path;
+const starlingUrl = (path, tokenId) => {
+  const tokenIdPath = tokenId ? `${tokenId}/` : "";
+  return `https://tdhwn6aiki.execute-api.eu-west-1.amazonaws.com/prod/${tokenIdPath}${path}`;
 };
 
 const headers = {
@@ -21,7 +22,15 @@ export const postToken = (accessToken) => {
 export const getBalance = (tokenId) => {
   return axios({
     method: "get",
-    url: starlingUrl(`balance/${tokenId}`),
+    url: starlingUrl("balance", tokenId),
+    headers
+  }).catch(parseError);
+};
+
+export const getTransasctions = (tokenId) => {
+  return axios({
+    method: "get",
+    url: starlingUrl("transactions", tokenId),
     headers
   }).catch(parseError);
 };

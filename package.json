@@ -39,6 +39,7 @@
     "query-string": "^5.1.0",
     "raf": "^3.4.0",
     "react": "^16.3.1",
+    "react-cookie": "^2.2.0",
     "react-cookie-banner": "^3.0.0",
     "react-dom": "^16.3.1",
     "react-helmet": "^5.2.0",

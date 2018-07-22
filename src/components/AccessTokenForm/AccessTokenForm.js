@@ -16,7 +16,7 @@ export class AccessTokenForm extends Component {
         </Header>
         <br/>
         <Container textAlign='left' style={{ width: "400px" }}>
-          <Form onSubmit={e => postToken(e)} inverted error={!!errors} size='huge'>
+          <Form onSubmit={e => postToken(e)} inverted error={!!errors}>
             <Form.Field
               control={Input}
               label='Personal access token'
@@ -27,7 +27,8 @@ export class AccessTokenForm extends Component {
               value={token}
               onChange={handleTokenChange}
               type='text'/>
-            <Form.Button primary size='huge'>Get access</Form.Button>
+            <br/>
+            <Form.Button primary>Get access</Form.Button>
             <Message style={{ margin: 0 }} size='tiny' compact error content={errors && errors.token}/>
           </Form>
         </Container>
